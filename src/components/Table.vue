@@ -1,8 +1,8 @@
 <script setup>
-import query  from './../helpers/fetch_sql.js';
-console.log(query)
-// const {isLoading, hasEroor, errorMessage, data} = useQuery()
-// console.log('data = ', data, isLoading, errorMessage)
+defineProps({
+  thead: Array
+}
+)
 </script>
 
 <template>
@@ -10,15 +10,15 @@ console.log(query)
   <table>
     <thead>
       <tr>
-        <th>id</th>
-        <th>brand</th>
+        <th  v-for="th in thead">{{ th }}</th>
+        <!-- <th>brand</th>
         <th>made in</th>
         <th>delivery date</th>
         <th>amount</th>
-        <th>price</th>
+        <th>price</th> -->
       </tr>
     </thead>
-    <tbody>
+    <!-- <tbody>
       <tr>
         <td>id</td>
         <td>brand</td>
@@ -27,7 +27,7 @@ console.log(query)
         <td>amount</td>
         <td>price</td>
       </tr>
-    </tbody>
+    </tbody> -->
   </table>
  </div>
 </template>

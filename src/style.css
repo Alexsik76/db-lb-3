@@ -1,35 +1,152 @@
-.main{
-background-color: burlywood;
-height: auto;
-width: auto;
-}
-.flex{
-display:flex;
-flex-direction:column;
-background-color: #ffa07a;;
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
 }
 
-.navbar{
-  background-color:  #ffa07a;
-  min-height: 15vh;
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
-.body{
-  flex: 1 1 auto;
-  background-color: blanchedalmond;
+
+:focus,
+:active {
+	outline: none;
 }
-.content {
-  height: 75vh;
+
+a:focus,
+a:active {
+	outline: none;
 }
-.footer{
-  background-color: chocolate;
-  min-height: 10vh;
+
+nav,
+footer,
+header,
+aside {
+	display: block;
 }
-table{
-width: 75vw;
-margin: auto;
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
 }
-th, td {
-  border-style: solid;
-  border-color: brown;
-  border: 1px solid;
+
+input,
+button,
+textarea {
+	font-family: inherit;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+a,
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: 400;
+}
+
+#app {
+	height: 100%;
+}
+
+.block {
+	height: 100%;
+}
+
+.block__coll {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 75vw;
+	margin: auto;
+}
+
+.block__element_navbar {
+	height: 20%;
+	background-image: url("/img/bg3.jpg");
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.block__element_main {
+	flex: 1 1 auto;
+}
+
+.block__row {
+	width: 100%;
+	display: inline-flex;
+}
+
+#sql-input {
+	width: 90%;
+	margin: 5%;
+	border: 2px solid gray;
+	font-size: 24px;
+}
+
+.block__element_form {
+	flex-basis: 50%;
+}
+
+.block__element_table {
+	flex-basis: 50%;
+}
+
+table {
+	width: 90%;
+	margin: 5%;
+	table-layout: fixed;
+	border: 2px solid gray;
+	font-size: 22px;
+}
+th{
+	background-color: burlywood;
+	font-size: 20px;
+
+}
+tr:hover {
+	background-color: #D6EEEE;
 }
