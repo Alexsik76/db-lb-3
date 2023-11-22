@@ -119,27 +119,34 @@ h6 {
 	width: 100%;
 	display: inline-flex;
 }
-
-#sql-input {
+hr{
+	height:2px;
+	border-width:0;
+	color:gray;
+	background-color:gray
+}
+.block__element_form, .block__element_table {
+	flex-basis: 50%;
 	width: 90%;
 	margin: 5%;
 	border: 2px solid gray;
+	border-radius: 5px;
 	font-size: 24px;
 }
 
-.block__element_form {
+/* .block__element_form {
 	flex-basis: 50%;
 }
 
 .block__element_table {
-	flex-basis: 50%;
-}
+	
+} */
 
-table {
+table, form {
 	width: 90%;
-	margin: 5%;
+	margin: 1%;
 	table-layout: fixed;
-	border: 2px solid gray;
+	/* border: 2px solid gray; */
 	font-size: 22px;
 }
 th{
