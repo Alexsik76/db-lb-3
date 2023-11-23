@@ -1,33 +1,27 @@
 <script setup>
 defineProps({
-  thead: Array
+  data: Object,
 }
 )
 </script>
 
 <template>
  <div class="main_table">
-  <table>
+  <table v-if="data?.result">
     <thead>
       <tr>
-        <th  v-for="th in thead">{{ th }}</th>
-        <!-- <th>brand</th>
-        <th>made in</th>
-        <th>delivery date</th>
-        <th>amount</th>
-        <th>price</th> -->
+        <th v-for="(value, key) in data.result[0]">
+          {{ key }}
+        </th>
       </tr>
     </thead>
-    <!-- <tbody>
-      <tr>
-        <td>id</td>
-        <td>brand</td>
-        <td>made_in</td>
-        <td>delivery_date</td>
-        <td>amount</td>
-        <td>price</td>
+      <tbody>
+      <tr v-for="row in data.result">
+        <td v-for="(value, key)  in row">  
+        {{ value }}
+       </td>  
       </tr>
-    </tbody> -->
+    </tbody>
   </table>
  </div>
 </template>

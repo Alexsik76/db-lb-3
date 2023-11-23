@@ -1,24 +1,29 @@
 <script setup>
+import { useFetch } from '@vueuse/core';
+import { get_url } from '/src/helpers/helpers.js'
 import Table from './Table.vue'
 import { ref, computed } from 'vue'
+
+const url_part = 'sql'
+const url = get_url(url_part)
 const message = ref('')
-const thead = computed(() => {
-    if (message.value && message.value.toLocaleLowerCase().includes('from')) {
-        let sql_string = message.value
-        let thead_str = sql_string.toLocaleLowerCase().trim().substring(7, (sql_string.indexOf('from') - 1))
-        let thead_arr = thead_str.split(',')
-        let thead_aliased = thead_arr.map(replace_alias)
-        console.log(thead_aliased)
-        return thead_aliased
-    }
+const args = computed(() => {
+    return message.value
+})
+const { execute, data, error, isFetching } = useFetch(url, { immediate: false },
+    {
+        beforeFetch({ options }) {
+            options.headers = { ...options.headers, ContentType: `text/plain` }
+            return {
+                options,
+            }
+        }
+    })
+    .post(args).json()
+function procees_query() {
+    execute()
 }
-)
-function replace_alias(value) {
-    if (value && value.toLocaleLowerCase().includes(' as ')) {
-        return value.toLocaleLowerCase().split(' as ')[1].trim()
-    }
-    return value
-}
+
 </script>
 <template>
     <div id="sql" class="block__content">
@@ -30,15 +35,19 @@ function replace_alias(value) {
                         <form action="none">
                             <textarea id="sql-input" rows="10" cols="50" v-model="message"
                                 placeholder="Add sql query"></textarea>
+                            <button type="button" @click="procees_query">Надіслати запит</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="block__element_external">
+            <div v-if="!isFetching" class="block__element_external">
                 <h2>Результат запиту</h2>
-                <div class="block__element block__element_table">
+                <div class="block__element block__element_table" v-if="error">
+                    {{ error }}
+                </div>
+                <div v-else class="block__element block__element_table">
                     <div class="block__content">
-                        <Table :thead="thead" />
+                        <Table :data="data" />
                     </div>
                 </div>
             </div>

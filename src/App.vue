@@ -7,6 +7,4 @@ import Base from './components/Base.vue'
 </template>
 
 <style scoped>
-
-
 </style>

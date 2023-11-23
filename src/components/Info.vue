@@ -1,13 +1,16 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useFetch } from '@vueuse/core';
+import { get_url } from '/src/helpers/helpers.js'
 
-const selected = ref('A')
-
-const options = ref([
-    { text: 'One', value: 'A' },
-    { text: 'Two', value: 'B' },
-    { text: 'Three', value: 'C' }
-])
+const url_part = 'schema'
+const url = get_url(url_part)
+const { isFetching, error, data } = useFetch(url).get().json()
+const selected = ref()
+const columns_by_table = computed(() => {
+    let columns = data.value.find((element) => element.table_name === selected.value).columns
+    return columns
+})
 </script>
 <template>
     <div id="info" class="block__content">
@@ -15,11 +18,11 @@ const options = ref([
             <div class="block__element_external">
                 <h2>Таблиці</h2>
                 <div class="block__element block__element_form">
-                    <div class="block__content">
+                    <div class="block__content" v-if="data && !isFetching && !error">
                         <form action="none">
-                            <select v-model="selected" size="2" title="Таблиці">
-                                <option v-for="option in options" :value="option.value">
-                                    {{ option.text }}
+                            <select :size="data.length" title="Таблиці" v-model="selected">
+                                <option v-for="table in data" :value="table.table_name">
+                                    {{ table.table_name }}
                                 </option>
                             </select>
                         </form>
@@ -30,7 +33,7 @@ const options = ref([
                 <h2>Колонки</h2>
                 <div class="block__element block__element_table">
                     <div class="block__content">
-                        <div class="main_table">
+                        <div class="main_table" v-if="data && !isFetching && !error && selected">
                             <table>
                                 <thead>
                                     <tr>
@@ -39,9 +42,9 @@ const options = ref([
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>id</td>
-                                        <td>brand</td>
+                                    <tr v-for="column in columns_by_table">
+                                        <td>{{ column.column_name }}</td>
+                                        <td>{{ column.data_type }}</td>
                                     </tr>
                                 </tbody>
                             </table>
