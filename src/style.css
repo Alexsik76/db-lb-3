@@ -35,7 +35,7 @@ body {
 	width: 100%;
 	font-size: 100%;
 	line-height: 1;
-	font-size: 14px;
+	font-size: 18px;
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -89,10 +89,15 @@ h6 {
 
 #app {
 	height: 100%;
+	font-size: 20px;
+	
 }
 
 .block {
 	height: 100%;
+}
+.block__content{
+	font-size: 18px;
 }
 
 .block__coll {
@@ -101,6 +106,10 @@ h6 {
 	height: 100%;
 	width: 75vw;
 	margin: auto;
+	background-image: url("/img/pexels-clarissa-schwarz-8941370.jpg");
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .block__element_navbar {
@@ -108,52 +117,71 @@ h6 {
 	background-image: url("/img/bg3.jpg");
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover;	
+	box-shadow: 0px 6px 6px 0px rgba(141, 143, 143, 0.74);
+	
 }
 
 .block__element_main {
 	flex: 1 1 auto;
+	
 }
 
 .block__row {
 	width: 100%;
 	display: inline-flex;
 }
-hr{
-	height:2px;
-	border-width:0;
-	color:gray;
-	background-color:gray
+hr {
+	height: 2px;
+	border-width: 0;
+	color: gray;
+	background-color: gray;
 }
-.block__element_form, .block__element_table {
+.block__element_external {
 	flex-basis: 50%;
-	width: 90%;
-	margin: 5%;
+	width: 96%;
+	margin: 2%;
+	font-size: 24px;
+	background-color: rgb(215, 215, 215);
+	border-radius: 5px;
+	box-shadow: 6px 6px 6px 0px rgba(141, 143, 143, 0.74);
+	
+}
+h2 {
+	text-align: center;
+	margin: 8px;
+}
+.block__element_form,
+.block__element_table {
 	border: 2px solid gray;
 	border-radius: 5px;
 	font-size: 24px;
+	margin: 2%;
 }
-
-/* .block__element_form {
-	flex-basis: 50%;
+table,
+form {
+	width: 96%;
+	margin: 2%;
+	font-size: 18px;
+	border-radius: 5px;
 }
-
-.block__element_table {
-	
-} */
-
-table, form {
-	width: 90%;
-	margin: 1%;
-	table-layout: fixed;
-	/* border: 2px solid gray; */
-	font-size: 22px;
+option{
+	font-size: 18px;
 }
-th{
-	background-color: burlywood;
+textarea{
+	font-family: 'Courier New', Courier, monospace;
+	font-size: inherit;
+	width: 100%;
+	border-radius: 5px;
+	padding: 1%;
+
+}
+th {
+	background-color: rgb(191, 191, 191);
 	font-size: 20px;
-
+	padding: 1%; 
+	border-radius: 3px;
 }
 tr:hover {
-	background-color: #D6EEEE;
+	background-color: #d6eeee;
 }

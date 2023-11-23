@@ -23,16 +23,23 @@ function replace_alias(value) {
 <template>
     <div id="sql" class="block__content">
         <div class="block__row">
-            <div class="block__element block__element_form">
-                <div class="block__content">
-                    <form action="none">
-                    <textarea id="sql-input" rows="10" cols="50" v-model="message" placeholder="Add sql query"></textarea>
-                </form>
+            <div class="block__element_external">
+                <h2>SQL запит</h2>
+                <div class="block__element block__element_form">
+                    <div class="block__content">
+                        <form action="none">
+                            <textarea id="sql-input" rows="10" cols="50" v-model="message"
+                                placeholder="Add sql query"></textarea>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="block__element block__element_table">
-                <div class="block__content">
-                    <Table :thead="thead" />
+            <div class="block__element_external">
+                <h2>Результат запиту</h2>
+                <div class="block__element block__element_table">
+                    <div class="block__content">
+                        <Table :thead="thead" />
+                    </div>
                 </div>
             </div>
         </div>
