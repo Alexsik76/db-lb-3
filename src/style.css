@@ -111,26 +111,31 @@ h6 {
 	background-position: 0 0;
 	background-repeat: no-repeat;
 	background-size: cover;
+	
 }
 
 .block__element_navbar {
-	min-height: 20%;
-	background-image: url("/img/bg3.jpg");
+	min-height: 10%;
+	/* background-image: linear-gradient(to bottom right, rgb(118, 118, 118), rgb(215, 215, 215)); */
+	background-image: url("/img/pexels-clarissa-schwarz-8941370.jpg");
 	background-position: 0 0;
 	background-repeat: no-repeat;
 	background-size: cover;	
 	box-shadow: 0px 6px 6px 0px rgba(141, 143, 143, 0.74);
+	background-blend-mode: soft-light;
 	
 }
 
 .block__element_main {
 	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
 	
 }
 
 .block__row {
 	width: 100%;
-	min-height: 70%;
+	min-height: 80%;
 	display: inline-flex;
 }
 
@@ -141,13 +146,27 @@ hr {
 	background-color: gray;
 }
 #info{
+	flex: auto;
 	min-height: 35%;
 	
 }
 #sql {
 	min-height: 45%;
 }
+#sql-btn{
+	align-self: end;
+	height: 5vh;
+	margin: 1vh 0 1vh;
+	padding: 1vh;
+	border: 2px solid gray;
+	border-radius: 5px;
+	font-size: inherit
 
+}
+#sql-btn:hover{
+	box-shadow: 6px 6px 6px 0px rgba(141, 143, 143, 0.74);
+
+}
 .block__element_external {
 	flex-basis: 50%;
 	width: 96%;
@@ -169,8 +188,15 @@ h2 {
 	font-size: 24px;
 	margin: 2%;
 }
-table,
+table{
+	width: 96%;
+	margin: 2%;
+	font-size: 18px;
+	border-radius: 5px;
+}
 form {
+	display: flex;
+	flex-direction: column;
 	width: 96%;
 	margin: 2%;
 	font-size: 18px;

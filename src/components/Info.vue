@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useFetch } from '@vueuse/core';
+import gsap from 'gsap'
 import { get_url } from '/src/helpers/helpers.js'
 
 const url_part = 'schema'
@@ -8,9 +9,31 @@ const url = get_url(url_part)
 const { isFetching, error, data } = useFetch(url).get().json()
 const selected = ref()
 const columns_by_table = computed(() => {
-    let columns = data.value.find((element) => element.table_name === selected.value).columns
+    let columns = data.value.find((element) => element.TABLE_NAME === selected.value).columns
     return columns
 })
+function onBeforeEnter(el) {
+  el.style.opacity = 0
+  el.style.height = 0
+}
+
+function onEnter(el, done) {
+  gsap.to(el, {
+    opacity: 1,
+    height: '1.6em',
+    delay: el.dataset.index * 0.15,
+    onComplete: done
+  })
+}
+
+function onLeave(el, done) {
+  gsap.to(el, {
+    opacity: 0,
+    height: 0,
+    delay: el.dataset.index * 0.08,
+    onComplete: done
+  })
+}
 </script>
 <template>
     <div id="info" class="block__content">
@@ -21,8 +44,8 @@ const columns_by_table = computed(() => {
                     <div class="block__content" v-if="data && !isFetching && !error">
                         <form action="none">
                             <select :size="data.length" title="Таблиці" v-model="selected">
-                                <option v-for="table in data" :value="table.table_name">
-                                    {{ table.table_name }}
+                                <option v-for="table in data" :value="table.TABLE_NAME">
+                                    {{ table.TABLE_NAME }}
                                 </option>
                             </select>
                         </form>
@@ -41,12 +64,17 @@ const columns_by_table = computed(() => {
                                         <th>Тип даних</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr v-for="column in columns_by_table">
-                                        <td>{{ column.column_name }}</td>
-                                        <td>{{ column.data_type }}</td>
+                                <TransitionGroup tag="tbody"
+                                @before-enter="onBeforeEnter"
+                                @enter="onEnter">
+                           
+                                    <tr v-for="(column, index) in columns_by_table" 
+                                    :key="column.COLUMN_NAME"
+                                    :data-index="index">
+                                        <td>{{ column.COLUMN_NAME }}</td>
+                                        <td>{{ column.DATA_TYPE }}</td>
                                     </tr>
-                                </tbody>
+                                </TransitionGroup>
                             </table>
                         </div>
                     </div>
@@ -55,3 +83,4 @@ const columns_by_table = computed(() => {
         </div>
     </div>
 </template>
+

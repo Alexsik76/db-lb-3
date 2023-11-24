@@ -35,7 +35,7 @@ function procees_query() {
                         <form action="none">
                             <textarea id="sql-input" rows="10" cols="50" v-model="message"
                                 placeholder="Add sql query"></textarea>
-                            <button type="button" @click="procees_query">Надіслати запит</button>
+                            <button id="sql-btn" type="button" @click="procees_query">Надіслати запит</button>
                         </form>
                     </div>
                 </div>

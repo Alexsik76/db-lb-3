@@ -13,7 +13,9 @@ import SqlBlock from './SqlBock.vue';
       </div>
       <div class="block__element block__element_main">
         <Info />
+        <div id="separator" class="block__content">
         <hr>
+        </div>
         <SqlBlock />
       </div>
       <div class="block__element block__element_footer">
