@@ -7,7 +7,7 @@ import { get_url } from '/src/helpers/helpers.js'
 const url_part = 'schema'
 const url = get_url(url_part)
 const { isFetching, error, data } = useFetch(url).get().json()
-const selected = ref()
+const selected = ref('car')
 const columns_by_table = computed(() => {
     let columns = data.value.find((element) => element.TABLE_NAME === selected.value).columns
     return columns
