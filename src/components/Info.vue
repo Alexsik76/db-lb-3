@@ -38,9 +38,9 @@ function onLeave(el, done) {
 <template>
     <div id="info" class="block__content">
         <div class="block__row">
-            <div class="block__element_external">
+            <div class="block__element-external">
                 <h2>Таблиці</h2>
-                <div class="block__element block__element_form">
+                <div class="block__element block__element-form">
                     <div class="block__content" v-if="data && !isFetching && !error">
                         <form action="none">
                             <select :size="data.length" title="Таблиці" v-model="selected">
@@ -52,11 +52,11 @@ function onLeave(el, done) {
                     </div>
                 </div>
             </div>
-            <div class="block__element_external">
+            <div class="block__element-external">
                 <h2>Колонки</h2>
-                <div class="block__element block__element_table">
+                <div class="block__element block__element-table">
                     <div class="block__content">
-                        <div class="main_table" v-if="data && !isFetching && !error && selected">
+                        <div class="main-table" v-if="data && !isFetching && !error && selected">
                             <table>
                                 <thead>
                                     <tr>
@@ -67,7 +67,6 @@ function onLeave(el, done) {
                                 <TransitionGroup tag="tbody"
                                 @before-enter="onBeforeEnter"
                                 @enter="onEnter">
-                           
                                     <tr v-for="(column, index) in columns_by_table" 
                                     :key="column.COLUMN_NAME"
                                     :data-index="index">

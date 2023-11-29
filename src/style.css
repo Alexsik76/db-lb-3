@@ -104,15 +104,15 @@ h6 {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	width: 75vw;
-	margin: auto;
+	/* width: 85vw; */
+	margin: 0 auto;
 	background-image: url("/img/main_bg.jpg");
 	background-position: 0 0;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 
-.block__element_navbar {
+.block__element-navbar {
 	min-height: 10%;
 	background-image: url("/img/main_bg.jpg");
 	background-position: 0 0;
@@ -121,7 +121,7 @@ h6 {
 	box-shadow: 0px 6px 6px 0px darkgray;
 }
 
-.block__element_main {
+.block__element-main {
 	flex: 1 1 auto;
 	display: flex;
 	flex-direction: column;
@@ -164,7 +164,7 @@ hr {
 	font-weight: bold;
 	font-size: 20px;
 }
-.block__element_external {
+.block__element-external {
 	flex-basis: 50%;
 	width: 96%;
 	margin: 2%;
@@ -177,9 +177,9 @@ h2 {
 	text-align: center;
 	margin: 8px;
 }
-.block__element_form,
-.block__element_table {
-	border: 2px solid gray;
+.block__element-form,
+.block__element-table {
+	border: 2px solid silver;
 	border-radius: 5px;
 	font-size: 24px;
 	margin: 2%;
@@ -189,6 +189,7 @@ table {
 	margin: 2%;
 	font-size: 18px;
 	border-radius: 5px;
+	border-collapse: collapse;
 }
 form {
 	display: flex;
@@ -212,16 +213,18 @@ textarea {
 th {
 	background-color: darkgray;
 	font-size: 20px;
-	padding: 1%;
+	padding: 6px;
 	border-radius: 3px;
+	text-align: left;
 }
 td {
-	padding: 3px;
+	padding: 6px;
 }
 
 tr:nth-child(even){
-	background-color: rgb(245, 245, 245);
-}
+	background-color: snow;
+ }
 tr:hover {
-	background-color: rgb(185, 185, 185);
+	background-color: darkgray;
+	padding: 4px;
 }
