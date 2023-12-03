@@ -43,9 +43,6 @@ body {
 
 input,
 button,
-textarea {
-	font-family: inherit;
-}
 
 input::-ms-clear {
 	display: none;
@@ -90,6 +87,7 @@ h6 {
 #app {
 	height: 100%;
 	font-size: 20px;
+	font-family: Helvetica;
 }
 
 .block {
@@ -97,14 +95,14 @@ h6 {
 }
 .block__content {
 	font-size: 18px;
-	margin-bottom: 1%;
+	margin: 5px 0 5px;
 }
 
 .block__coll {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	/* width: 85vw; */
+	width: 85%;
 	margin: 0 auto;
 	background-image: url("/img/main_bg.jpg");
 	background-position: 0 0;
@@ -113,7 +111,7 @@ h6 {
 }
 
 .block__element-navbar {
-	min-height: 10%;
+	min-height: 5%;
 	background-image: url("/img/main_bg.jpg");
 	background-position: 0 0;
 	background-repeat: no-repeat;
@@ -126,11 +124,16 @@ h6 {
 	display: flex;
 	flex-direction: column;
 }
+#info{
+	max-height: 40%;
+}
 
+#sql {
+	height: 60%;
+}
 .block__row {
-	width: 100%;
-	min-height: 80%;
 	display: inline-flex;
+	width: 100%;
 }
 
 hr {
@@ -139,35 +142,11 @@ hr {
 	color: gray;
 	background-color: gray;
 }
-#info {
-	flex: auto;
-	min-height: 35%;
-}
-#sql {
-	min-height: 45%;
-}
-#sql-btn {
-	align-self: end;
-	height: 5vh;
-	margin: 1vh 0 1vh;
-	padding: 1vh;
-	border: 2px solid gray;
-	border-radius: 5px;
-	font-size: inherit;
-}
-#sql-btn:hover {
-	box-shadow: 6px 6px 6px 0px rgba(141, 143, 143, 0.74);
-}
-#sql-input{
-	font-size: large;
-	font-stretch: expanded;
-	font-weight: bold;
-	font-size: 20px;
-}
+
+
 .block__element-external {
 	flex-basis: 50%;
-	width: 96%;
-	margin: 2%;
+	margin: 1%;
 	font-size: 24px;
 	background-color: Silver;
 	border-radius: 5px;
@@ -175,40 +154,79 @@ hr {
 }
 h2 {
 	text-align: center;
-	margin: 8px;
+	margin: 10px;
+}
+.info{
+	display: flex;
+	height: 100%;
+	align-items: center;
+  	justify-content: center;
+	margin: 2%;
 }
 .block__element-form,
 .block__element-table {
 	border: 2px solid silver;
 	border-radius: 5px;
 	font-size: 24px;
-	margin: 2%;
+	margin: 1%;
 }
 table {
 	width: 96%;
-	margin: 2%;
+	margin: 0 2% 0;
 	font-size: 18px;
 	border-radius: 5px;
 	border-collapse: collapse;
 }
 form {
+	
+	font-size: 18px;
+	
+}
+fieldset {
 	display: flex;
 	flex-direction: column;
-	width: 96%;
-	margin: 2%;
-	font-size: 18px;
 	border-radius: 5px;
+	border: 2px solid DimGray;
+	padding: 2%;
+	font-size: 22px;
+}
+select {
+	font-size: 18px;
+	width: 100%;
+	background-color: Gainsboro;
+	overflow: hidden;
+	border-radius: inherit;
+	border: 2px solid DimGray;
 }
 option {
-	font-size: 18px;
 	padding: 5px;
+	border-radius: inherit;
 }
+
 textarea {
-	font-family: "Courier New", Courier, monospace;
-	font-size: inherit;
+	font-family: Courier, monospace;
+	font-size: 20px;
 	width: 100%;
+	height: 80%;
 	border-radius: 5px;
+	border: 2px solid DimGray;
 	padding: 1%;
+	background-color: Gainsboro;
+}
+button {
+	display: block;
+	width: 30%;
+	height: 10%;
+	margin-top: 2%;
+	padding: 2%;
+	border: 2px solid DimGray;
+	border-radius: 5px;
+	align-self: flex-end;
+	font-size: 16px;
+	background-color: darkgray;
+}
+button:hover {
+	background-color: gray;
 }
 th {
 	background-color: darkgray;
@@ -222,7 +240,7 @@ td {
 }
 
 tr:nth-child(even){
-	background-color: snow;
+	background-color: Gainsboro;
  }
 tr:hover {
 	background-color: darkgray;

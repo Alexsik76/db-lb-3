@@ -29,22 +29,25 @@ const { execute, data, error, isFetching } = useFetch(url, { immediate: false },
     <div id="sql" class="block__content">
         <div class="block__row">
             <div class="block__element-external">
-                <h2>SQL запит</h2>
                 <div class="block__element block__element-form">
-                    <div class="block__content">
                         <form action="none">
-                            <textarea id="sql-input" rows="10" cols="50" v-model="message"
-                                placeholder="Add sql query"></textarea>
-                            <button id="sql-btn" type="button" @click="execute">Надіслати запит</button>
+                            <fieldset>
+                                <legend>SQL запит</legend>
+                                <textarea id="sql-input" rows="10" cols="50" v-model="message"
+                                    placeholder="Add sql query"></textarea>
+                                <button id="sql-btn" type="button" @click="execute">Надіслати запит</button>
+                            </fieldset>
                         </form>
-                    </div>
                 </div>
             </div>
             <div v-if="isFetching" class="block__element-external">
-            Fetching ...
+                <p class="info"><h2>Fetching ...</h2></p>
             </div>
             <div v-else-if="error" class="block__element-external">
-            {{ error }}
+                <p class="info"><h2>{{ error }}</h2></p>
+            </div>
+            <div v-else-if="'error' in data.result" class="block__element-external">
+                <p class="info"><h2>{{ data.result.error }}</h2></p>
             </div>
             <div v-else-if="data?.result" class="block__element-external">
                 <h2>Результат запиту</h2>
@@ -55,7 +58,7 @@ const { execute, data, error, isFetching } = useFetch(url, { immediate: false },
                 </div>
             </div>
             <div v-else class="block__element-external">
-                <h2>Waiting for the request.</h2>
+                <p class="info"><h2>Waiting for the request.</h2></p>
             </div>
         </div>
     </div>

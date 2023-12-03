@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
- <div class="main_table">
+ <div class="main-table">
   <table v-if="data">
     <thead>
       <tr>
