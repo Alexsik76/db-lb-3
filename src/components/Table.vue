@@ -6,26 +6,22 @@ defineProps({
 </script>
 
 <template>
- <div class="main-table">
   <table v-if="data">
     <thead>
       <tr>
-        <th v-for="(value, key) in data[0]">
+        <th v-for="(_, key) in data[0]">
           {{ key }}
         </th>
       </tr>
     </thead>
-      <tbody>
+    <tbody>
       <tr v-for="row in data">
-        <td v-for="(value, key)  in row">  
-        {{ value }}
-       </td>  
+        <td v-for="value in row">
+          {{ value }}
+        </td>
       </tr>
     </tbody>
   </table>
- </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
