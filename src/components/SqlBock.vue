@@ -46,7 +46,7 @@ const { execute, data, error, isFetching } = useFetch(url, { immediate: false },
             <h2>{{ error }}</h2>
             </p>
         </div>
-        <div v-else-if="data?.result" class="row__element">
+        <div v-else-if="data?.result" class="row__element row__element--scroll">
             <div v-if="'error' in data.result">
                 <p>
                 <h2>{{ data.result.error }}</h2>

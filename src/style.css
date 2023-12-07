@@ -129,6 +129,7 @@ body {
 	flex-basis: 50%;
 	padding: 1%;
 	align-self: center;
+	max-height: 350px;
 }
 
 hr {
@@ -173,7 +174,6 @@ textarea {
 	font-family: Courier, monospace;
 	font-size: 20px;
 	width: 100%;
-	height: 80%;
 	border-radius: 5px;
 	border: 2px solid DimGray;
 	padding: 1%;
@@ -195,33 +195,43 @@ button {
 button:hover {
 	background-color: gray;
 }
-
 table {
 	width: 96%;
 	margin: 0 2% 0;
-	font-size: 18px;
-	border: 2px groove DimGray;
+	padding: 3px;
+	font-size: 16px;
+	border: 2px solid DimGray;
+	
 	border-radius: 5px;
 }
-
 th {
-	background-color: darkgray;
-	font-size: 20px;
-	padding: 6px;
-	border-radius: 3px;
-	text-align: left;
+	background-color: gray;
 }
 
-td {
-	padding: 6px;
+table thead,
+table tbody tr {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
 	border-collapse: collapse;
 }
 
-tr:nth-child(even) {
+table tbody {
+	display: block;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+th,
+td {
+	padding: 6px;
+	text-align: left;
+}
+
+tr:nth-child(odd) {
 	background-color: Gainsboro;
 }
 
 tr:hover {
 	background-color: darkgray;
-	padding: 4px;
 }
