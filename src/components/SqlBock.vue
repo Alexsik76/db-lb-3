@@ -1,27 +1,27 @@
 <script setup>
+import { ref, computed } from 'vue'
 import { useFetch } from '@vueuse/core';
-import { get_url } from '/src/helpers/helpers.js'
+import { get_url, sql_query } from '/src/helpers/helpers.js'
 import Table from './Table.vue'
-import { ref } from 'vue'
 
 const url_part = 'sql'
 const url = get_url(url_part)
-const message = ref('')
-
 const { execute, data, error, isFetching } = useFetch(url, { immediate: false },
     {
         beforeFetch({ options }) {
             options.headers = {
                 ...options.headers,
-                ContentType: `text/plain`
+                ContentType: `text/plain; charset=UTF-8`
             }
             return {
                 options,
             }
         }
     })
-    .post(() => message.value)
+    .post(() => sql_query.s_query)
     .json()
+
+
 
 </script>
 
@@ -31,7 +31,9 @@ const { execute, data, error, isFetching } = useFetch(url, { immediate: false },
             <form action="none">
                 <fieldset>
                     <legend>SQL запит</legend>
-                    <textarea id="sql-input" rows="10" cols="50" v-model="message" placeholder="Add sql query"></textarea>
+                    <textarea ref="t_area" id="sql-input" rows="10" cols="50" v-model="sql_query.s_query"
+                        placeholder="Add sql query">
+                    </textarea>
                     <button id="sql-btn" type="button" @click="execute">Надіслати запит</button>
                 </fieldset>
             </form>

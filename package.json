@@ -9,11 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@jamescoyle/vue-icon": "^0.1.2",
+    "@mdi/js": "^7.3.67",
     "@vueuse/core": "^10.6.1",
     "gsap": "^3.12.2",
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@mdi/font": "^7.3.67",
     "@vitejs/plugin-vue": "^4.2.3",
     "vite": "^4.4.5"
   }
