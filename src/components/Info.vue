@@ -38,7 +38,7 @@ const columns_by_table = computed(() => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(column, index) in columns_by_table" :key="column.COLUMN_NAME" :data-index="index">
+                        <tr v-for="column in columns_by_table" :key="column.COLUMN_NAME">
                             <td>{{ column.COLUMN_NAME }}</td>
                             <td>{{ column.DATA_TYPE }}</td>
                         </tr>
