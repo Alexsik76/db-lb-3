@@ -10,10 +10,11 @@ function func(col_name){
 <template>
   <div class="content">
     <div class="content__navbar">
-      <Info @add-column="func"/>
+      
     </div>
     <div class="content__main">
-      
+      <Info @add-column="func"/>
+      <hr>
       <SqlBlock @append-column="func"/>
     </div>
     <div class="content__footer">

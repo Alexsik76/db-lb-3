@@ -1,12 +1,12 @@
 <script setup>
 import { useFetch } from '@vueuse/core';
 import { get_url, sql_query } from '/src/helpers/helpers.js'
+import SvgIcon from '@jamescoyle/vue-icon';
+import { mdiTableColumn, mdiTable } from '@mdi/js';
 
 const url_part = 'schema'
 const url = get_url(url_part)
 const { isFetching, error, data } = useFetch(url).get().json()
-import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiTableColumn, mdiTable } from '@mdi/js';
 
 </script>
 <template>
