@@ -7,6 +7,6 @@ export function get_url(url_part) {
 export const sql_query = reactive({
   s_query: "",
   append(col_name) {
-    this.s_query += ", " + col_name;
+    this.s_query += " " + col_name;
   },
 });

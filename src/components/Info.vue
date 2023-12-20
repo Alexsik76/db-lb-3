@@ -18,8 +18,9 @@ import { mdiTableColumn, mdiTable } from '@mdi/js';
                         <div class="cell"><svg-icon type="mdi" :path="mdiTable"></svg-icon></div>
                         <div class="cell">{{ table.TABLE_NAME }}</div>
                     </div>
-                    <div class="column-name" v-for="column in table.columns" :key="column.COLUMN_NAME" @click="sql_query.append(column.COLUMN_NAME)">
-                        <span class="tooltip">: [{{column.DATA_TYPE}}]</span>
+                    <div class="column-name" v-for="column in table.columns" :key="column.COLUMN_NAME"
+                        @click="sql_query.append(column.COLUMN_NAME)">
+                        <span class="tooltip">: [{{ column.DATA_TYPE }}]</span>
                         <div class="cell"><svg-icon type="mdi" :path="mdiTableColumn"></svg-icon></div>
                         <div class="cell">{{ column.COLUMN_NAME }}</div>
                     </div>

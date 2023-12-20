@@ -81,6 +81,10 @@ body {
 	height: 100%;
 	font-size: 20px;
 	font-family: Helvetica;
+	background-image: url("/img/main_bg.jpg");
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .content {
@@ -89,10 +93,7 @@ body {
 	height: 100%;
 	width: 85%;
 	margin: 0 auto;
-	background-image: url("/img/main_bg.jpg");
-	background-position: 0 0;
-	background-repeat: no-repeat;
-	background-size: cover;
+	
 }
 .content__navbar,
 .content__main,
@@ -162,7 +163,6 @@ body {
 	visibility: hidden;
 	width: 120px;
 	background-color: rgba(169, 169, 169, 0.278);
-	/* color: #fff; */
 	text-align: center;
 	border: 1px solid DimGray;
 	border-radius: 5px;
@@ -251,17 +251,22 @@ button:hover {
 table {
 	width: 96%;
 	margin: 0 2% 0;
-	padding: 3px;
-	font-size: 16px;
+	padding: 5px;
+	font-size: 14px;
 	border: 2px solid DimGray;
-	
 	border-radius: 5px;
 }
 th {
 	background-color: gray;
 }
 
-table thead,
+table thead{
+	display: table;
+	width: 100%;
+	padding-right: 2%;
+	table-layout: fixed;
+	border-collapse: collapse;
+}
 table tbody tr {
 	display: table;
 	width: 100%;
