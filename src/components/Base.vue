@@ -7,8 +7,13 @@ import SqlBlock from './SqlBock.vue';
 <template>
   <div class="content">
     <div class="content__navbar">
+      
       <Info/>
     </div>
+    <div class="content__main">
+      <Info @add-column="func"/>
+      <hr>
+      <SqlBlock @append-column="func"/>
     <div class="content__main"> 
       <SqlBlock/>
     </div>

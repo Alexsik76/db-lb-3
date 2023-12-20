@@ -138,40 +138,41 @@ body {
 }
 .table-name, .column-name {
 	display: flex;
-	width: 170px;
-	padding: 5px;
-	margin: 5px;
-	border: 1px solid DimGray;
-	border-radius: 5px;
+	font-size: medium;
+	width: 16ch;
+	padding: 0.3em;
+	margin: 0.1em;
+	border: 0.07em solid DimGray;
+	border-radius: 0.3em;
 	vertical-align: baseline;
 	position: relative;
 
 }
 .table-name{
-	font-weight: 700;
+	font-weight: bold;
 	text-transform: uppercase;
 
 }
 .cell{
-	height: 30px;
-	margin: 3px;
 	display: flex;
 	align-items: center;
 	
 }
 .column-name .tooltip {
 	visibility: hidden;
+	width: 10ch;
+	background-color: rgba(169, 169, 169, 0.747);
 	width: 120px;
 	background-color: rgba(169, 169, 169, 0.278);
 	text-align: center;
-	border: 1px solid DimGray;
-	border-radius: 5px;
-	padding: 5px 0;
+	border: 0.07em solid DimGray;
+	border-radius: 0.3em;;
+	padding: 0.3em 0;
 	
 	/* Position the tooltip */
 	position: absolute;
 	z-index: 1;
-	top: -20px;
+	top: -1em;
 	left: 70%;
   }
   
@@ -250,6 +251,11 @@ button:hover {
 }
 table {
 	width: 96%;
+	margin: 0 0.7rem 0;
+	padding: 0.7rem;
+	font-size: 14px;
+	border: 0.15rem solid DimGray;
+	border-radius: 0.3rem;
 	margin: 0 2% 0;
 	padding: 5px;
 	font-size: 14px;
@@ -258,6 +264,14 @@ table {
 }
 th {
 	background-color: gray;
+}
+
+table thead tr th:nth-child(1){
+	border-radius: 0.2rem 0 0 0;
+}
+table thead tr th:nth-last-child(1){
+	border-radius: 0 0.2rem 0 0;
+	margin-right: 20px !important;
 }
 
 table thead{
@@ -272,6 +286,14 @@ table tbody tr {
 	width: 100%;
 	table-layout: fixed;
 	border-collapse: collapse;
+
+}
+table thead tr {
+	display: table;
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 100%;
+	padding-right: 2%;
 }
 
 table tbody {
@@ -282,7 +304,8 @@ table tbody {
 
 th,
 td {
-	padding: 6px;
+	padding: 0.4rem;
+	word-wrap:break-word;
 	text-align: left;
 }
 
