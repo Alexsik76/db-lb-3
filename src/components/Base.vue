@@ -21,6 +21,7 @@ import SqlBlock from './SqlBock.vue';
       Footer
     </div>
   </div>
+  </div>
 </template>
 
 <style scoped></style>
