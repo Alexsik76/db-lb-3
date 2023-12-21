@@ -11,9 +11,9 @@ import SqlBlock from './SqlBock.vue';
       <Info/>
     </div>
     <div class="content__main">
-      <Info @add-column="func"/>
+      <Info />
       <hr>
-      <SqlBlock @append-column="func"/>
+      <SqlBlock/>
     <div class="content__main"> 
       <SqlBlock/>
     </div>
