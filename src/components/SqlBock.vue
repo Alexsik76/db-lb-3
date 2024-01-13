@@ -11,7 +11,6 @@ const { execute, data, error, isFetching } = useMyFetch(url_part, {
 
 function simple_query(event) {
     sql_query.s_query = event.target.value;
-    console.log(all_queries)
     execute();
 }
 
