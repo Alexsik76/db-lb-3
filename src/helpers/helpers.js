@@ -2,8 +2,8 @@ import { reactive } from "vue";
 import {createFetch} from '@vueuse/core'
 
 export const useMyFetch = createFetch({
-  baseUrl: 'https:/db-api.zpi-zp31.vn.ua/api/',
-  combination: 'overwrite',
+  baseUrl: 'https://db-api.zpi-zp31.vn.ua/api/',
+  // combination: 'overwrite',
 });
 
 export const sql_query = reactive({
