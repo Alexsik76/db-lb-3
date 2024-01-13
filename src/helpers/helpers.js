@@ -1,10 +1,9 @@
 import { reactive } from "vue";
+import {createFetch} from '@vueuse/core'
 
-// const base_api_url = import.meta.env.VITE_BASE_API_URL;
-const base_api_url = "https:/db-api.zpi-zp31.vn.ua/api/"
-export function get_url(url_part) {
-  return `${base_api_url}${url_part}`;
-}
+export const useMyFetch = createFetch({
+  baseUrl: 'https:/db-api.zpi-zp31.vn.ua/api/',
+});
 
 export const sql_query = reactive({
   s_query: "",

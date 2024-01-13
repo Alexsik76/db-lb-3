@@ -1,11 +1,11 @@
 <script setup>
-import { useFetch } from '@vueuse/core';
-import { get_url, sql_query, all_queries } from '/src/helpers/helpers.js'
+import { useMyFetch } from '/src/helpers/helpers.js';
+import { sql_query, all_queries } from '/src/helpers/helpers.js'
 import Table from './Table.vue'
 
 const url_part = 'sql'
-const url = get_url(url_part)
-const { execute, data, error, isFetching } = useFetch(url, { immediate: false })
+const { execute, data, error, isFetching } = useMyFetch(url_part, { 
+    immediate: false })
     .post(() => sql_query.s_query)
     .json()
 
