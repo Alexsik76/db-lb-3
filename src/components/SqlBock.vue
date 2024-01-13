@@ -1,6 +1,6 @@
 <script setup>
 import { useFetch } from '@vueuse/core';
-import { get_url, sql_query } from '/src/helpers/helpers.js'
+import { get_url, sql_query, all_queries } from '/src/helpers/helpers.js'
 import Table from './Table.vue'
 
 const url_part = 'sql'
@@ -8,6 +8,13 @@ const url = get_url(url_part)
 const { execute, data, error, isFetching } = useFetch(url, { immediate: false })
     .post(() => sql_query.s_query)
     .json()
+
+function simple_query(event) {
+    sql_query.s_query = event.target.value;
+    console.log(all_queries)
+    execute();
+}
+
 </script>
 
 <template>
@@ -48,6 +55,12 @@ const { execute, data, error, isFetching } = useFetch(url, { immediate: false })
             <h2>Waiting for the request.</h2>
             <h3>select * from car</h3>
             </p>
+        </div>
+    </div>
+    <div class="row row--full-width">
+        <div class="row__element">
+            <button v-for="(value, text, index) in all_queries" class="simple-sql-btn" type="button" @click="simple_query"
+                :value="value" :key="index">{{ text }}</button>
         </div>
     </div>
 </template>

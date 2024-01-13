@@ -12,7 +12,7 @@ import SqlBlock from './SqlBock.vue';
       <SqlBlock/>
     </div>
     <div class="content__footer">
-      Footer
+      2023
     </div>
   </div>
 </template>
