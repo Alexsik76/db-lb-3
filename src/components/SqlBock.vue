@@ -2,6 +2,7 @@
 import { useMyFetch } from '/src/helpers/helpers.js';
 import { sql_query, all_queries } from '/src/helpers/helpers.js'
 import Table from './Table.vue'
+import Select from './Select.vue'
 
 const url_part = 'sql'
 const { execute, data, error, isFetching } = useMyFetch(url_part, { 
@@ -10,7 +11,7 @@ const { execute, data, error, isFetching } = useMyFetch(url_part, {
     .json()
 
 function simple_query(event) {
-    sql_query.s_query = event.target.value;
+    sql_query.s_query = all_queries[event.target.value];
     execute();
 }
 
@@ -19,8 +20,9 @@ function simple_query(event) {
 <template>
     <div class="row">
         <div class="row__element">
-            <button v-for="(value, text, index) in all_queries" class="simple-sql-btn" type="button" @click="simple_query"
-                :value="value" :key="index">{{ text }}</button>
+            <Select/>
+            <button v-for="(_, text, index) in all_queries" class="simple-sql-btn" type="button" @click="simple_query"
+                :value="text" :key="index">{{ text }}</button>
         </div>
     </div>
     <hr>

@@ -138,16 +138,14 @@ fieldset {
 }
 
 select {
+	width: auto;
+	margin: 1%;
 	background-color: Gainsboro;
-	overflow: hidden;
-	border-radius: inherit;
+	border-radius: 5px;
 	border: 2px solid DimGray;
 }
 
-option {
-	padding: 5px;
-	border-radius: inherit;
-}
+
 
 textarea {
 	width: 100%;
@@ -161,7 +159,7 @@ textarea {
 button {
 	width: 30%;
 	height: 10%;
-	margin-top: 2%;
+	margin: 1%;
 	padding: 2%;
 	float: right;
 	border: 2px solid DimGray;
@@ -174,12 +172,8 @@ button:hover {
 }
 .simple-sql-btn{
 	width: auto;
-	margin-top: 1%;
-	margin-left: 1%;
 	padding: 1%;
-	border: 1px solid DimGray;
-	border-radius: 5px;
-	background-color: darkgray;
+	
 }
 table {
 	padding: 0.7rem;
