@@ -19,12 +19,20 @@ function simple_query(event) {
 <template>
     <div class="row">
         <div class="row__element">
+            <button v-for="(value, text, index) in all_queries" class="simple-sql-btn" type="button" @click="simple_query"
+                :value="value" :key="index">{{ text }}</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="row__element">
             <form action="none">
                 <fieldset>
                     <legend>SQL запит</legend>
-                    <textarea ref="t_area" id="sql-input" rows="10" cols="50" v-model="sql_query.s_query"
+                    <textarea ref="t_area" id="sql-input" rows="10"  v-model="sql_query.s_query"
                         placeholder="Add sql query">
                     </textarea>
+                    <br/>
                     <button id="sql-btn" type="button" @click="execute">Надіслати запит</button>
                 </fieldset>
             </form>
@@ -39,7 +47,7 @@ function simple_query(event) {
             <h2>{{ error }}</h2>
             </p>
         </div>
-        <div v-else-if="data?.result" class="row__element row__element--scroll">
+        <div v-else-if="data?.result" class="row__element">
             <div v-if="'error' in data.result">
                 <p class="centered">
                 <h2>{{ data.result.error }}</h2>
@@ -54,12 +62,6 @@ function simple_query(event) {
             <h2>Waiting for the request.</h2>
             <h3>select * from car</h3>
             </p>
-        </div>
-    </div>
-    <div class="row row--full-width">
-        <div class="row__element">
-            <button v-for="(value, text, index) in all_queries" class="simple-sql-btn" type="button" @click="simple_query"
-                :value="value" :key="index">{{ text }}</button>
         </div>
     </div>
 </template>
