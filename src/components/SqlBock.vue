@@ -1,37 +1,46 @@
 <script setup>
-import { useMyFetch } from '/src/helpers/helpers.js';
-import { sql_query, all_queries } from '/src/helpers/helpers.js'
+import { ref, computed} from 'vue';
+import { useApiFetch } from '/src/helpers/helpers.js';
+import { sql_query} from '/src/helpers/helpers.js'
 import Table from './Table.vue'
 import Select from './Select.vue'
+import allQueries from './../../queries.json'
+const type_query = ref('')
 
-const url_part = 'sql'
-const { execute, data, error, isFetching } = useMyFetch(url_part, { 
+const { execute, data, error, isFetching } = useApiFetch('sql', { 
     immediate: false })
     .post(() => sql_query.s_query)
     .json()
 
 function simple_query(event) {
-    sql_query.s_query = all_queries[event.target.value];
+    sql_query.s_query = allQueries[type_query.value][event.target.value];
     execute();
 }
+
+const selected_buttons = computed(()=> {
+    if(type_query.value){
+        return allQueries[type_query.value];
+    }
+    });
 
 </script>
 
 <template>
     <div class="row">
         <div class="row__element">
-            <Select/>
-            <button v-for="(_, text, index) in all_queries" class="simple-sql-btn" type="button" @click="simple_query"
+            <label><Select v-model="type_query" /></label>
+            
+            <button v-for="(_, text, index) in selected_buttons" class="simple-sql-btn" type="button" @click="simple_query"
                 :value="text" :key="index">{{ text }}</button>
         </div>
     </div>
     <hr>
-    <div class="row">
+    <div class="row row--max">
         <div class="row__element">
             <form action="none">
                 <fieldset>
                     <legend>SQL запит</legend>
-                    <textarea ref="t_area" id="sql-input" rows="10"  v-model="sql_query.s_query"
+                    <textarea class="prettyprint" ref="t_area" id="sql-input" rows="10"  v-model="sql_query.s_query"
                         placeholder="Add sql query">
                     </textarea>
                     <br/>
@@ -55,9 +64,7 @@ function simple_query(event) {
                 <h2>{{ data.result.error }}</h2>
                 </p>
             </div>
-            <div v-else>
-                <Table :data="data.result" />
-            </div>
+            <Table v-else :data="data.result" />
         </div>
         <div v-else class="row__element">
             <p class="centered">

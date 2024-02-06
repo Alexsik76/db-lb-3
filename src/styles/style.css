@@ -1,4 +1,4 @@
-@import url('./clear-style.css');
+@import url("./clear-style.css");
 
 body {
 	height: 100%;
@@ -16,7 +16,6 @@ body {
 	height: 100%;
 	width: 85%;
 	margin: 0 auto;
-	
 }
 .content__navbar,
 .content__main,
@@ -50,26 +49,27 @@ body {
 .row {
 	display: flex;
 	padding: 1%;
-
-	
+}
+.row--max {
+	flex: 1 1 auto;
 }
 
 .row__element {
+	height: 100%;
 	padding: 1%;
 	align-self: center;
 	flex: 1 1 auto;
 	flex-wrap: wrap;
 	display: flex;
-
 }
 
-
-.table-row {
+.info-row {
 	display: flex;
+	flex-wrap: wrap;
 }
-.table-name, .column-name {
+.info-table-name,
+.info-column-name {
 	display: flex;
-
 	width: 16ch;
 	padding: 0.3em;
 	margin: 0.1em;
@@ -77,19 +77,16 @@ body {
 	border-radius: 0.3em;
 	vertical-align: baseline;
 	position: relative;
-
 }
-.table-name{
+.info-table-name {
 	font-weight: bold;
 	text-transform: uppercase;
-
 }
-.cell{
+.cell {
 	display: flex;
 	align-items: center;
-	
 }
-.column-name .tooltip {
+.info-column-name .tooltip {
 	visibility: hidden;
 	width: 10ch;
 	background-color: rgba(169, 169, 169, 0.747);
@@ -97,23 +94,22 @@ body {
 	background-color: rgba(169, 169, 169, 0.278);
 	text-align: center;
 	border: 0.07em solid DimGray;
-	border-radius: 0.3em;;
+	border-radius: 0.3em;
 	padding: 0.3em 0;
-	
+
 	/* Position the tooltip */
 	position: absolute;
 	z-index: 1;
 	top: -1em;
 	left: 70%;
-  }
-  
-  .column-name:hover .tooltip {
+}
+
+.info-column-name:hover .tooltip {
 	visibility: visible;
-	
-  }
-  .column-name {
+}
+.info-column-name {
 	cursor: pointer;
-  }
+}
 
 hr {
 	height: 2px;
@@ -126,8 +122,7 @@ hr {
 	text-align: center;
 }
 
-form{
-	padding: 2%;
+form {
 	min-width: 30em;
 }
 fieldset {
@@ -137,15 +132,23 @@ fieldset {
 	font-size: 18px;
 }
 
-select {
+label {
 	width: auto;
+	padding: 0.5em;
 	margin: 1%;
 	background-color: Gainsboro;
 	border-radius: 5px;
 	border: 2px solid DimGray;
 }
-
-
+select,
+option {
+	background-color: Gainsboro;
+	border-radius: 5px;
+	padding: 0.2em;
+}
+option {
+	margin: 1em;
+}
 
 textarea {
 	width: 100%;
@@ -158,9 +161,9 @@ textarea {
 
 button {
 	width: 30%;
-	height: 10%;
+	height: 3em;
 	margin: 1%;
-	padding: 2%;
+	padding: 0.5em;
 	float: right;
 	border: 2px solid DimGray;
 	border-radius: 5px;
@@ -170,69 +173,8 @@ button {
 button:hover {
 	background-color: gray;
 }
-.simple-sql-btn{
+.simple-sql-btn {
 	width: auto;
-	padding: 1%;
-	
-}
-table {
-	padding: 0.7rem;
-	border-radius: 0.3rem;
-	margin: 0 2% 0;
-	table-layout: fixed;
-	border: 2px solid DimGray;
-}
-th {
-	background-color: gray;
-}
-table thead tr {
-	display: table;
-	table-layout: fixed;
-	border-collapse: collapse;
-	width: 100%;
-	padding-right: 2%;
-}
-
-table thead tr th:nth-child(1){
-	border-radius: 0.2rem 0 0 0;
-}
-
-table thead tr th:nth-last-child(1){
-	border-radius: 0 0.2rem 0 0;
-	margin-right: 20px;
-}
-
-table thead{
-	display: table;
-	padding-right: 2%;
-	border-collapse: collapse;
-}
-table tbody tr {
-	display: table;
-	width: 100%;
-	table-layout: fixed;
-	border-collapse: collapse;
-
 }
 
 
-table tbody {
-	display: block;
-	max-height: 300px;
-	overflow-y: auto;
-}
-
-th,
-td {
-	padding: 0.4rem;
-	word-wrap:break-word;
-	text-align: left;
-}
-
-tr:nth-child(odd) {
-	background-color: Gainsboro;
-}
-
-tr:hover {
-	background-color: darkgray;
-}

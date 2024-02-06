@@ -1,18 +1,21 @@
 <script setup>
+import { computed } from 'vue'
 const props = defineProps({
   data: Object,
 }
 )
 
-const get_width = () =>{
+const col_width = computed(() => {
   let el = Object.keys(props.data[0])[0];
-  console.log(el);
   return `${el.length + 2}em`
-}
+})
 </script>
 
 <template>
   <table>
+    <caption>
+    Результат
+  </caption>
     <thead>
       <tr>
         <th scope="col" v-for="(_, key) in data[0]">
@@ -31,10 +34,63 @@ const get_width = () =>{
 </template>
 
 <style scoped>
-table thead tr th:nth-child(1) {
-  width: v-bind(get_width());
+table {
+	height: 100%;
+	padding: 2%;
+	border-radius: 0.3em;
+	border: 2px solid DimGray;
 }
-table tbody tr td:nth-child(1) {
-  width: v-bind(get_width());
+caption{
+  width: 5em;
+  margin-bottom: -1%;
+  margin-left: 2%;
+  background-color: Silver;
+  font-size: 18px
+}
+
+table tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.3em;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+th {
+  background-color: gray;
+}
+
+th:nth-child(1) {
+  border-radius: 0.2em 0 0 0;
+  width: v-bind(col_width);
+}
+
+th:nth-last-child(1) {
+  border-radius: 0 0.2em 0 0;
+}
+
+table tbody {
+  display: block;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-color: darkgray Gainsboro;
+}
+
+tr:nth-child(odd) {
+  background-color: Gainsboro;
+}
+
+tr:hover {
+  background-color: darkgray;
+}
+
+td:nth-child(1) {
+  width: v-bind(col_width);
 }
 </style>
