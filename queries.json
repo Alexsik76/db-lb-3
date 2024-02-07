@@ -1,18 +1,31 @@
-{"join": {
-    "Всі машини": "SELECT * FROM car",
-    "Всі продажі": "SELECT * FROM marketing",
-    "Всі продажі з маркою": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'date sale', marketing.quantity, car.brand FROM marketing JOIN car ON marketing.car_id = car.id;"
+{
+  "join": {
+    "title": "Прості запити",
+    "buttons": {
+      "Всі машини": "SELECT * FROM car",
+      "Всі продажі": "SELECT * FROM marketing",
+      "Всі продажі з маркою": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'Дата продажу', marketing.quantity AS 'Кількість', car.brand AS 'Марка' FROM marketing JOIN car ON marketing.car_id = car.id;"
+    }
   },
   "where": {
-    "Продажі американських машин":"SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'date sale', marketing.quantity, car.brand, made_in FROM marketing JOIN car ON marketing.car_id = car.id where made_in='США';",
-    "Продажі німецьких машин":"SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'date sale', marketing.quantity, car.brand, made_in FROM marketing JOIN car ON marketing.car_id = car.id where made_in='Німеччина';"
+    "title": "Складна умова",
+    "buttons": {
+    "Продажі американських машин": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'date sale', marketing.quantity, car.brand, made_in FROM marketing JOIN car ON marketing.car_id = car.id WHERE made_in='США';",
+    "Продажі німецьких машин": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'date sale', marketing.quantity, car.brand, made_in FROM marketing JOIN car ON marketing.car_id = car.id WHERE made_in='Німеччина';"
+    }
   },
   "sum": {
-  "Продажі з маркою машини, ціною та сумою": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS date_sale, marketing.quantity, car.brand, CONCAT(car.price, ' ₴') AS price, CONCAT(car.price*quantity, ' ₴') AS summ FROM marketing JOIN car ON marketing.car_id = car.id;"
+    "title": "Підсумковий запит",
+    "buttons": {
+    "Продажі з маркою машини, ціною та сумою": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS date_sale, marketing.quantity, car.brand, CONCAT(car.price, ' ₴') AS price, CONCAT(car.price*quantity, ' ₴') AS summ FROM marketing JOIN car ON marketing.car_id = car.id;"
+    }
   },
-  "asc_desk":{
-  
+  "asc_desk": {
+    "title": "Упорядкування",
+    "buttons": {}
   },
-  "search":{
+  "search": {
+    "title": "Пошук",
+    "buttons": {}
   }
 }
