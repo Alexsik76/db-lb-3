@@ -11,7 +11,8 @@
     "title": "Складна умова",
     "buttons": {
     "Продажі американських машин": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'date sale', marketing.quantity, car.brand, made_in FROM marketing JOIN car ON marketing.car_id = car.id WHERE made_in='США';",
-    "Продажі німецьких машин": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'date sale', marketing.quantity, car.brand, made_in FROM marketing JOIN car ON marketing.car_id = car.id WHERE made_in='Німеччина';"
+    "Продажі німецьких машин": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'date sale', marketing.quantity, car.brand, made_in FROM marketing JOIN car ON marketing.car_id = car.id WHERE made_in='Німеччина';",
+    "Продажі українських машин": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'date sale', marketing.quantity, car.brand, made_in FROM marketing JOIN car ON marketing.car_id = car.id WHERE made_in='Україна';"
     }
   },
   "sum": {
