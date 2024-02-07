@@ -2,7 +2,7 @@ import { reactive } from 'vue';
 import { createFetch } from '@vueuse/core';
 
 export const useApiFetch = createFetch({
-  baseUrl: "https://db-api.zpi-zp31.vn.ua/api/",
+  baseUrl: import.meta.env.VITE_BASE_API_URL
 });
 
 export const sql_query = reactive({

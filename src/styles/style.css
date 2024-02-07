@@ -18,7 +18,7 @@ body {
 	margin: 0 auto;
 }
 .content__navbar,
-.content__main,
+
 .content__footer {
 	background-color: Silver;
 	box-shadow: 6px 6px 6px 0px darkgray;
@@ -32,7 +32,6 @@ body {
 
 .content__main {
 	margin: 1%;
-	border-radius: 5px;
 	flex: 1 1 auto;
 	display: flex;
 	flex-direction: column;
@@ -46,12 +45,22 @@ body {
 	text-align: center;
 }
 
+.content__main .row {
+	background-color: Silver;
+	box-shadow: 6px 6px 6px 0px darkgray;
+	border-radius: 0 5px 0 0;
+}
+.content__main .row--tabs {
+	box-shadow: none
+}
+
 .row {
 	display: flex;
 	padding: 0.5%;
 }
-.row--max {
+.content__main .row--max {
 	flex: 1 1 auto;
+	border-radius: 0 0 5px 5px;
 }
 
 .row__element {
@@ -61,6 +70,9 @@ body {
 	flex: 1 1 auto;
 	flex-wrap: wrap;
 	display: flex;
+}
+.row__element--end{
+	justify-content:end;
 }
 
 .info-row {
@@ -110,19 +122,25 @@ body {
 	cursor: pointer;
 }
 
-hr {
-	height: 2px;
-	border-width: 0;
-	background-color: gray;
-}
-
 .centered {
 	text-align: center;
 }
 
-form {
-	min-width: 30em;
+form{
+	min-width: 25em;
 }
+.pre {
+	width: 25em;
+	height: 100%;
+	padding: 2%;
+	border-radius: 0.3em;
+	border: 2px solid DimGray;
+}
+pre {
+	padding: 1%;
+	white-space: pre-line;
+}
+
 fieldset {
 	border-radius: 5px;
 	border: 2px solid DimGray;
@@ -139,7 +157,7 @@ label {
 	border: 2px solid DimGray;
 }
 
-textarea {
+textarea, pre {
 	width: 100%;
 	font-family: Courier, monospace;
 	border-radius: 5px;
@@ -173,18 +191,24 @@ button:hover {
 .row--tabs{
 	margin: 0;
 	padding: 0;
-	background-color: silver;
+	background-image: url("/img/main_bg.jpg");
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+	box-shadow: none;
+	border-radius: 5px 5px 0 0;
 }
 
 .tab-btn {
 	margin:0;
 	padding: 1%;
-	border: 2px solid DimGray;
+	border: 1px solid DimGray;
 	border-left: 0;
 	border-top: 0;
+	border-bottom: 0;
 	border-radius: 5px 5px 0 0;
-	
-
 }
 
-
+.tab-btn:last-child {
+	box-shadow: 3px 3px 3px 3px darkgray;
+}

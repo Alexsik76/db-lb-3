@@ -1,12 +1,13 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed} from 'vue';
 import { useApiFetch } from '/src/helpers/helpers.js';
 import { sql_query } from '/src/helpers/helpers.js'
 import Table from './Table.vue'
 import TabBtn from './TabBtn.vue'
+import Pre from './Pre.vue'
 import allQueries from './../../queries.json'
 const type_query = ref('join')
-
+const allow_query = ref(false)
 
 const { execute, data, error, isFetching } = useApiFetch('sql', {
     immediate: false
@@ -34,32 +35,34 @@ const selected_buttons = computed(() => {
 
 <template>
     <div class="row row--tabs">
-        <TabBtn v-for="_, value in allQueries" :value="value" :title=allQueries[value].title :actual_type="type_query"
+        <TabBtn v-for="(_, text, index) in allQueries" :value="text" :title=allQueries[text].title :actual_type="type_query" :key="index"
             @change_type="change_type">
         </TabBtn>
     </div>
     <div class="row">
-
         <div class="row__element">
             <button v-for="(_, text, index) in selected_buttons" class="simple-sql-btn" type="button" @click="simple_query"
                 :value="text" :key="index">
                 {{ text }}
             </button>
         </div>
+        <div class="row__element row__element--end">
+            <input type="checkbox" id="allow_query" name="allow_query" v-model="allow_query">
+            <label for="allow_query"> Дозволити довільні запити</label>
+        </div>
     </div>
-    <hr>
     <div class="row row--max">
         <div class="row__element">
-            <form action="none">
+            <form v-if="allow_query" action="none">
                 <fieldset>
                     <legend>SQL запит</legend>
-                    <textarea class="prettyprint" ref="t_area" id="sql-input" rows="10" v-model="sql_query.s_query"
-                        placeholder="Add sql query">
+                    <textarea id="sql-input" rows="10" v-model="sql_query.s_query" placeholder="Add sql query">
                     </textarea>
                     <br />
                     <button id="sql-btn" type="button" @click="execute">Надіслати запит</button>
                 </fieldset>
             </form>
+            <Pre v-else :query_text="sql_query.s_query"/>
         </div>
         <div v-if="isFetching" class="row__element">
             <p class="centered">
