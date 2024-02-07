@@ -3,9 +3,12 @@ import { ref, computed} from 'vue';
 import { useApiFetch } from '/src/helpers/helpers.js';
 import { sql_query} from '/src/helpers/helpers.js'
 import Table from './Table.vue'
-import Select from './Select.vue'
+import TabBtn from './TabBtn.vue'
 import allQueries from './../../queries.json'
-const type_query = ref('')
+const type_query = ref('join')
+
+
+
 
 const { execute, data, error, isFetching } = useApiFetch('sql', { 
     immediate: false })
@@ -17,6 +20,11 @@ function simple_query(event) {
     execute();
 }
 
+function change_type(value){
+    type_query.value = value;
+    
+}
+
 const selected_buttons = computed(()=> {
     if(type_query.value){
         return allQueries[type_query.value];
@@ -26,9 +34,18 @@ const selected_buttons = computed(()=> {
 </script>
 
 <template>
+    <div class="row row--tabs">
+        <TabBtn v-for="_, value in allQueries" :value="value" :actual_type="type_query" @change_type="change_type"></TabBtn>
+        <!-- <button class="tab-btn" type="button" @click="change_type" value="join" :class="isActive('join')">Прості запити</button> 
+        <button class="tab-btn" type="button" @click="change_type" value="where" :class="isActive('where')">Складна умова</button> 
+        <button class="tab-btn" type="button" @click="change_type" value="sum" :class="isActive('sum')">Підсумковий запит</button> 
+        <button class="tab-btn" type="button" @click="change_type" value="asc_desk" :class="isActive('asc_desk')">Упорядкування</button> 
+        <button class="tab-btn" type="button" @click="change_type" value="search" :class="isActive('search')">Пошук</button>  -->
+    </div>
     <div class="row">
+        
         <div class="row__element">
-            <label><Select v-model="type_query" /></label>
+           
             
             <button v-for="(_, text, index) in selected_buttons" class="simple-sql-btn" type="button" @click="simple_query"
                 :value="text" :key="index">{{ text }}</button>
@@ -74,3 +91,6 @@ const selected_buttons = computed(()=> {
         </div>
     </div>
 </template>
+<style scoped>
+
+</style>
