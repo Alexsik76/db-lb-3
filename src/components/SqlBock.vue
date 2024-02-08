@@ -1,10 +1,8 @@
 <script setup>
 import { ref, computed} from 'vue';
-import { useApiFetch } from '/src/helpers/helpers.js';
-import { sql_query } from '/src/helpers/helpers.js'
+import { useApiFetch, sql_query } from '/src/helpers/helpers.js';
 import Table from './Table.vue'
 import TabBtn from './TabBtn.vue'
-import Pre from './Pre.vue'
 import allQueries from './../../queries.json'
 const type_query = ref('join')
 const allow_query = ref(false)
@@ -30,6 +28,18 @@ const selected_buttons = computed(() => {
         return allQueries[type_query.value].buttons;
     }
 });
+
+const prettied = computed(()=>{
+    let value = ""
+    if(sql_query.s_query){
+        value =  sql_query.s_query;
+    }
+    else {
+        value = "-- Example Query \nSELECT * FROM car;"
+    }
+    let innerHtml = PR.prettyPrintOne(value, 'sql')
+    return `<pre>${innerHtml}</pre>`
+})
 
 </script>
 
@@ -62,7 +72,9 @@ const selected_buttons = computed(() => {
                     <button id="sql-btn" type="button" @click="execute">Надіслати запит</button>
                 </fieldset>
             </form>
-            <Pre v-else :query_text="sql_query.s_query"/>
+            <div v-else class="pre" v-html="prettied">
+                
+            </div>
         </div>
         <div v-if="isFetching" class="row__element">
             <p class="centered">
@@ -85,9 +97,10 @@ const selected_buttons = computed(() => {
         <div v-else class="row__element">
             <p class="centered">
             <h2>Waiting for the request.</h2>
-            <h3>select * from car</h3>
             </p>
         </div>
     </div>
 </template>
-<style scoped></style>
+<style>
+@import url('./../styles/pre.css'); 
+</style>
