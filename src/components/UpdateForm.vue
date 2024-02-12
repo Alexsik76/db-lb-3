@@ -5,9 +5,6 @@ import { useApiFetch } from '/src/helpers/helpers.js';
 import { sql_query } from '/src/helpers/helpers.js';
 const emit = defineEmits(['executeQuery',])
 const { data } = useApiFetch('schema').get().json()
-const props = defineProps({
-    data:Object,
-})
 
 
 const select_field = ref(0)
@@ -39,12 +36,6 @@ function handleForm() {
     let query = `UPDATE ${selected_table.value} SET ${new_values} WHERE ${fields[0]} = ${values[0]};`
     sql_query.s_query = query
     emit('executeQuery')
-    console.log(props.data[0])
-    // setTimeout(function(){
-    //         fill_table()
-    //     }, 2000);
-       
-    
 }
 function fill_table() {
     let query = `SELECT * from ${selected_table.value}`
@@ -62,7 +53,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <form id="update-form" action="none">
+    <form id="update-form" class="filled-form" action="none">
         <fieldset>
             <legend>Додавання запису</legend>
             <select name="select-table" id="select-table" v-model="select_field" @change="fill_table">

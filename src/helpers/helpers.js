@@ -15,7 +15,7 @@ export const sql_query = reactive({
 });
 
 export function fill_form(event) {
-    let form = document.getElementById('update-form');
+    let form = document.getElementsByClassName('filled-form')[0];
     if (form){let fields = form.getElementsByClassName("text-input"); 
     let target = event.target.parentElement.getElementsByTagName("td");
     for(let i=0; i < target.length; i++){
