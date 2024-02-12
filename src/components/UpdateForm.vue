@@ -55,7 +55,7 @@ onMounted(() => {
 <template>
     <form id="update-form" class="filled-form" action="none">
         <fieldset>
-            <legend>Додавання запису</legend>
+            <legend>Оновлення запису</legend>
             <select name="select-table" id="select-table" v-model="select_field" @change="fill_table">
                 <option value=0>Автомобілі</option>
                 <option value=1>Продажі</option>

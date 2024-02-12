@@ -62,7 +62,7 @@ function delete_row(event){
 <template>
     <form id="delete-form" class="filled-form" @submit.prevent="delete_row">
         <fieldset>
-            <legend>Додавання запису</legend>
+            <legend>Видалення запису</legend>
             <select name="select-table" id="select-table" v-model="select_field" @change="fill_table">
                 <option value=0>Автомобілі</option>
                 <option value=1>Продажі</option>
