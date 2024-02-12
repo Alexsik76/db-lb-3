@@ -13,3 +13,13 @@ export const sql_query = reactive({
     this.s_query = new_query;
   },
 });
+
+export function fill_form(event) {
+    let form = document.getElementById('update-form');
+    if (form){let fields = form.getElementsByClassName("text-input"); 
+    let target = event.target.parentElement.getElementsByTagName("td");
+    for(let i=0; i < target.length; i++){
+      fields[i].value = target[i].innerHTML;
+    }
+  }  
+  };

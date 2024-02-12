@@ -56,7 +56,7 @@ body {
 
 .row {
 	display: flex;
-	padding: 0.5%;
+	padding: 0.1%;
 }
 .content__main .row--max {
 	flex: 1 1 auto;
@@ -64,17 +64,31 @@ body {
 }
 
 .row__element {
-	height: 100%;
 	padding: 1%;
+	height: 100%;
 	align-self: center;
+	
 	flex: 1 1 auto;
 	flex-wrap: wrap;
 	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.row__element--col {
+	flex-direction: column;
+	max-width: 30%;
 }
 .row__element--end{
 	justify-content:end;
 }
-
+.element--centered{
+	height: 100%;
+	width: 100%;
+	padding: 2%;
+	border-radius: 0.3em;
+	border: 2px solid DimGray;
+	
+}
 .info-row {
 	display: flex;
 	flex-wrap: wrap;
@@ -127,17 +141,27 @@ body {
 }
 
 form{
-	min-width: 25em;
-}
-.pre {
+	margin: 0.5%;
 	width: 25em;
-	height: 100%;
-	padding: 2%;
+	flex: 1;
+}
+#update-form #id{
+	pointer-events: none;
+	background-color: darkgray;
+}
+.pre{
+	width: 25em;
+	margin: 0.5%;
+	/* height: 40%; */
+	flex: 1;
+	/* /* margin: 2%; */
+	padding: 2%; 
 	border-radius: 0.3em;
 	border: 2px solid DimGray;
 }
 pre {
-	padding: 1%;
+	padding: 2%;
+	height: 100%;
 	white-space: pre-line;
 }
 
@@ -146,6 +170,16 @@ fieldset {
 	border: 2px solid DimGray;
 	padding: 2%;
 	font-size: 18px;
+	display: flex;
+	flex-direction: column;
+}
+.text-input {
+	width: auto;
+	padding: 0.5em;
+	margin: 0.3%;
+	background-color: Gainsboro;
+	border-radius: 5px;
+	border: 2px solid DimGray;
 }
 
 label {
@@ -208,7 +242,17 @@ button:hover {
 	border-bottom: 0;
 	border-radius: 5px 5px 0 0;
 }
+#ok-btn{
+margin: 1em;
+}
 
 .tab-btn:last-child {
 	box-shadow: 3px 3px 3px 3px darkgray;
+}
+select {
+	width: auto;
+	margin: 1%;
+	background-color: Gainsboro;
+	border-radius: 5px;
+	border: 2px solid DimGray;
 }

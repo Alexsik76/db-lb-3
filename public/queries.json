@@ -5,35 +5,30 @@
       "Всі машини": "SELECT * FROM car",
       "Всі продажі": "SELECT * FROM marketing",
       "Всі продажі з маркою": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'Дата продажу', \nmarketing.quantity AS 'Кількість', car.brand AS 'Марка' FROM marketing JOIN car ON marketing.car_id = car.id;"
-    }
+    },
+    "form": ""
   },
-  "where": {
-    "title": "Складна умова",
+  "insert": {
+    "title": "Додавання",
     "buttons": {
     "Продажі американських машин": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'date sale', \nmarketing.quantity, car.brand, made_in FROM marketing JOIN car ON marketing.car_id = car.id WHERE made_in='США';",
     "Продажі німецьких машин": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'date sale', \nmarketing.quantity, car.brand, made_in FROM marketing JOIN car ON marketing.car_id = car.id WHERE made_in='Німеччина';",
     "Продажі українських машин": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS 'date sale', \nmarketing.quantity, car.brand, made_in FROM marketing JOIN car ON marketing.car_id = car.id WHERE made_in='Україна';"
-    }
+    },
+    "form": "InsertForm"
   },
-  "sum": {
-    "title": "Підсумковий запит",
+  "update": {
+    "title": "Редагування",
     "buttons": {
     "Продажі з маркою машини, ціною та сумою": "SELECT marketing.id, DATE_FORMAT(marketing.date_of_sale, '%d.%m.%Y') AS date_sale, \nmarketing.quantity, car.brand, CONCAT(car.price, ' ₴') AS price, CONCAT(car.price*quantity, ' ₴') AS summ FROM marketing JOIN car ON marketing.car_id = car.id;",
     "Сума продажів по країні": "SELECT made_in, SUM(price*amount) FROM carshop.marketing \nJOIN carshop.car ON marketing.car_id \nGROUP BY made_in;",
     "Найдешевший автомобіль": "SELECT * FROM car \nWHERE price = (SELECT MIN(price) FROM car);"
-    }
+    },
+    "form": "UpdateForm"
   },
-  "asc_desk": {
-    "title": "Упорядкування",
-    "buttons": {
-      "...по ціні автомобілів": "SELECT * FROM car \nORDER BY price ASC;",
-      "...по кількості авто": "SELECT * FROM car \nORDER BY amount ASC;"
-    }
-  },
-  "search": {
-    "title": "Пошук",
-    "buttons": {
-      "Пошук BMW": "SELECT * FROM car WHERE brand LIKE 'BMW%';"
-    }
+  "delete": {
+    "title": "Видалення",
+    "buttons":{},
+    "form": "DeleteForm"
   }
 }

@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue'
+import { fill_form } from '../helpers/helpers';
 const props = defineProps({
   data: Object,
 }
@@ -23,8 +24,8 @@ const col_width = computed(() => {
         </th>
       </tr>
     </thead>
-    <tbody>
-      <tr v-for="row in data" :key="row[0]">
+    <tbody >
+      <tr v-for="row in data" :key="row[0]" @click="fill_form">
         <td v-for="value in row">
           {{ value }}
         </td>

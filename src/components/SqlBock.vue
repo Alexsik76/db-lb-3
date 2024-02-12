@@ -1,11 +1,34 @@
 <script setup>
-import { ref, computed} from 'vue';
+import { ref, computed, onBeforeMount} from 'vue';
 import { useApiFetch, sql_query } from '/src/helpers/helpers.js';
 import Table from './Table.vue'
 import TabBtn from './TabBtn.vue'
-import allQueries from './../../queries.json'
+import InsertForm from './InsertForm.vue'
+import DeleteForm from './DeleteForm.vue'
+import UpdateForm from './UpdateForm.vue'
 const type_query = ref('join')
 const allow_query = ref(false)
+const allQueries = ref()
+
+onBeforeMount(async () => {
+  const response = await fetch("/queries.json");
+  allQueries.value = await response.json();
+});
+
+const forms = {
+    InsertForm,
+    DeleteForm,
+    UpdateForm
+}
+
+const form = computed(
+    () => {
+        if(allQueries.value){
+            let form = allQueries.value[type_query.value]['form']
+            return forms[form]
+        }
+    } 
+)
 
 const { execute, data, error, isFetching } = useApiFetch('sql', {
     immediate: false
@@ -14,7 +37,7 @@ const { execute, data, error, isFetching } = useApiFetch('sql', {
     .json()
 
 function simple_query(event) {
-    sql_query.s_query = allQueries[type_query.value].buttons[event.target.value];
+    sql_query.s_query = allQueries.value[type_query.value].buttons[event.target.value];
     execute();
 }
 
@@ -24,10 +47,15 @@ function change_type(value) {
 }
 
 const selected_buttons = computed(() => {
-    if (type_query.value) {
-        return allQueries[type_query.value].buttons;
+    if (type_query.value && allQueries.value) {
+        return allQueries.value[type_query.value].buttons;
     }
 });
+function fill_table() {
+    let query = "SELECT * from car"
+    sql_query.s_query = query
+    execute()
+}
 
 const prettied = computed(()=>{
     let value = ""
@@ -50,7 +78,7 @@ const prettied = computed(()=>{
         </TabBtn>
     </div>
     <div class="row">
-        <div class="row__element">
+        <div v-if="selected_buttons" class="row__element">
             <button v-for="(_, text, index) in selected_buttons" class="simple-sql-btn" type="button" @click="simple_query"
                 :value="text" :key="index">
                 {{ text }}
@@ -62,19 +90,19 @@ const prettied = computed(()=>{
         </div>
     </div>
     <div class="row row--max">
-        <div class="row__element">
+       
+        <div class="row__element row__element--col">
+            <component v-if="form" :is="form" @executeQuery="execute"/>
             <form v-if="allow_query" action="none">
                 <fieldset>
                     <legend>SQL запит</legend>
-                    <textarea id="sql-input" rows="10" v-model="sql_query.s_query" placeholder="Add sql query">
+                    <textarea id="sql-input" rows="8" v-model="sql_query.s_query" placeholder="Add sql query">
                     </textarea>
                     <br />
                     <button id="sql-btn" type="button" @click="execute">Надіслати запит</button>
                 </fieldset>
             </form>
-            <div v-else class="pre" v-html="prettied">
-                
-            </div>
+            <div v-else class="pre" v-html="prettied"></div>
         </div>
         <div v-if="isFetching" class="row__element">
             <p class="centered">
@@ -84,15 +112,23 @@ const prettied = computed(()=>{
         <div v-else-if="error" class="row__element">
             <p class="centered">
             <h2>{{ error }}</h2>
+            <button id="ok-btn" type="button" @click="fill_table">Ок</button>
             </p>
         </div>
-        <div v-else-if="data?.result" class="row__element">
-            <div v-if="'error' in data.result">
+        <div v-else-if="data" class="row__element">
+            <div class="element" v-if="'error' in data">
                 <p class="centered">
-                <h2>{{ data.result.error }}</h2>
+                <h2>{{ data.error }}</h2>
                 </p>
+                <button id="ok-btn" type="button" @click="fill_table">Ок</button>
             </div>
-            <Table v-else :data="data.result" />
+            <div class="element element--centered" v-else-if="'result' in data">
+                <p class="centered">
+                <h2>{{ data.result }}</h2>
+                </p>
+                <button id="ok-btn" type="button" @click="fill_table">Ок</button>
+            </div>
+            <Table v-else :data="data" />
         </div>
         <div v-else class="row__element">
             <p class="centered">
